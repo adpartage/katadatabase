@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2041
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbKata", "DbKata\DbKata.csproj", "{787410A4-4425-488E-91D0-5F6D05D07AAB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{3635CF15-250B-4725-9C97-8B9CC46F0322}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbKata.Tests", "DbKata.Tests\DbKata.Tests.csproj", "{344C8769-8AB8-46B6-B826-7B064BD5ECF8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{787410A4-4425-488E-91D0-5F6D05D07AAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{787410A4-4425-488E-91D0-5F6D05D07AAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{787410A4-4425-488E-91D0-5F6D05D07AAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{787410A4-4425-488E-91D0-5F6D05D07AAB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{344C8769-8AB8-46B6-B826-7B064BD5ECF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{344C8769-8AB8-46B6-B826-7B064BD5ECF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{344C8769-8AB8-46B6-B826-7B064BD5ECF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{344C8769-8AB8-46B6-B826-7B064BD5ECF8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{344C8769-8AB8-46B6-B826-7B064BD5ECF8} = {3635CF15-250B-4725-9C97-8B9CC46F0322}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {98035F44-84D7-42B4-97A2-981F28712425}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,12 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/Contracts/obj/Debug
+/DbKata/bin/Debug
+/DbKata/obj/Debug
+/DbKata.Tests/bin/Debug
+/DbKata.Tests/obj/Debug
+/packages
+/Persistence/obj/Debug

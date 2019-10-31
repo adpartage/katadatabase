@@ -1,10 +1,8 @@
-﻿using DbKata.Utils;
-using System;
-using System.Linq;
+﻿using System;
 using System.Linq.Expressions;
 using System.Reflection;
 
-namespace DbKata.Entities
+namespace DbKata.Utils
 {
     public static class EntityExtension
     {
@@ -14,12 +12,11 @@ namespace DbKata.Entities
             return !string.IsNullOrEmpty(attribute?.Name) ? attribute.Name : propertyInfo.Name;
         }
 
-        public static string GetDbName<T, TU>(this T entity, Expression<Func<T, TU>> propertyAccessor)
-            where T:IEntity
+        public static string GetDbName<T, TU>(this T entity, Expression<Func<T, TU>> propertyAccessor)           
         {
-            if(propertyAccessor.Body is MemberExpression memberExpression)
+            if (propertyAccessor.Body is MemberExpression memberExpression)
             {
-                return (memberExpression.Member.GetCustomAttributes(typeof(DbNameAttribute), true).FirstOrDefault() as DbNameAttribute)?.Name ?? memberExpression.Member.Name;
+                return typeof(T).GetProperty(memberExpression.Member.Name).GetDbName();
             }
 
             return propertyAccessor.Name;

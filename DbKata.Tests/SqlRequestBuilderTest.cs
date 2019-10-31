@@ -8,12 +8,12 @@ namespace DbKata.Tests
     [TestFixture]
     public class SqlRequestBuilderTest
     {
-        private ISqlRequestBuilder<Customer, string> _sqlRequestBuilder;
+        private ISqlRequestBuilder<Customer, int> _sqlRequestBuilder;
 
         [SetUp]
         public void Setup()
         {
-            _sqlRequestBuilder = new SqlRequestBuilder<Customer, string>();
+            _sqlRequestBuilder = new SqlRequestBuilder<Customer, int>();
         }
 
         [Test]
@@ -27,13 +27,13 @@ namespace DbKata.Tests
         [Test]
         public void SqlRequestBuilder_BuildGetOneRequest_Test()
         {
-            var request = _sqlRequestBuilder.BuildGetOneRequest("c1");
+            var request = _sqlRequestBuilder.BuildGetOneRequest(13);
             Assert.NotNull(request.Parameters);
             var names = request.Parameters.ParameterNames;
             Assert.AreEqual(1, names.Count());
-            Assert.AreEqual("id", names.Single().ToLower());
-            Assert.AreEqual("c1", request.Parameters.Get<string>(names.Single()));
-            Assert.AreEqual("select * from tcustomer where id=@id", request.Sql.ToLower());
+            Assert.AreEqual("cid", names.Single().ToLower());
+            Assert.AreEqual(13, request.Parameters.Get<int>(names.Single()));
+            Assert.AreEqual("select * from tcustomer where cid=@cid", request.Sql.ToLower());
         }
 
         [Test]
@@ -41,22 +41,40 @@ namespace DbKata.Tests
         {
             var request = _sqlRequestBuilder.BuildAddRequest(new Customer
             {
-                Id = "c1",
-                Firstname = "Lance",
-                Lastname = "Marat"
+                Firstname = "John",
+                Lastname = "Shaft"
             });
 
             Assert.NotNull(request.Parameters);
             var names = request.Parameters.ParameterNames.ToList();
-            Assert.AreEqual(3, names.Count);
-            Assert.AreEqual("Id", names[0]);
-            Assert.AreEqual("FNAME", names[1]);
-            Assert.AreEqual("LNAME", names[2]);
+            Assert.AreEqual(2, names.Count);
+            Assert.AreEqual("FNAME", names[0]);
+            Assert.AreEqual("LNAME", names[1]);
+            Assert.AreEqual("John", request.Parameters.Get<string>("FNAME"));
+            Assert.AreEqual("Shaft", request.Parameters.Get<string>("LNAME"));
+            Assert.AreEqual("insert into tcustomer(fname, lname) output inserted.cid values(@fname, @lname)", request.Sql.ToLower());
+        }
 
-            Assert.AreEqual("c1", request.Parameters.Get<string>("Id"));
-            Assert.AreEqual("Lance", request.Parameters.Get<string>("FNAME"));
-            Assert.AreEqual("Marat", request.Parameters.Get<string>("LNAME"));
-            Assert.AreEqual("insert into tcustomer(id, fname, lname) output inserted.id values(@id, @fname, @lname)", request.Sql.ToLower());
+        [Test]
+        public void SqlRequestBuilder_BuildUpdateRequest_Test()
+        {
+            var request = _sqlRequestBuilder.BuildUpdateRequest(new Customer
+            {
+                Id = 19,
+                Firstname = "John",
+                Lastname = "Shaft"
+            });
+
+            Assert.NotNull(request.Parameters);
+            var names = request.Parameters.ParameterNames;
+            Assert.AreEqual(3, names.Count());
+            Assert.AreEqual("cid", names.ElementAt(0).ToLower());
+            Assert.AreEqual("fname", names.ElementAt(1).ToLower());
+            Assert.AreEqual("lname", names.ElementAt(2).ToLower());
+            Assert.AreEqual(19, request.Parameters.Get<int>(names.ElementAt(0)));
+            Assert.AreEqual("John", request.Parameters.Get<string>(names.ElementAt(1)));
+            Assert.AreEqual("Shaft", request.Parameters.Get<string>(names.ElementAt(2)));
+            Assert.AreEqual("update tcustomer set fname=@fname, set lname=@lname where cid=@cid", request.Sql.ToLower());
         }
     }
 }

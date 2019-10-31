@@ -1,8 +1,6 @@
 ﻿namespace DbKata.Entities
 {
-    public interface IEntity { }
-
-    public interface IEntity<TKey>: IEntity
+    public interface IEntity<TKey>
     {
         TKey Id { get; set; }
     }

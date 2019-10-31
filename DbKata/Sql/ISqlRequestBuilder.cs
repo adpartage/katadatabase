@@ -9,6 +9,6 @@ namespace DbKata.Sql
         (string Sql, DynamicParameters Parameters) BuildGetAllRequest();
         (string Sql, DynamicParameters Parameters) BuildGetOneRequest(TKey id);
         (string Sql, DynamicParameters Parameters) BuildUpdateRequest(T entity);
-        (string Sql, DynamicParameters Parameters) BuildDeleteRequest(T entity);
+        (string Sql, DynamicParameters Parameters) BuildDeleteRequest(TKey id);
     }
 }

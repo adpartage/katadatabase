@@ -51,22 +51,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Customer.cs" />
+    <Compile Include="Utils\EntityMapper.cs" />
     <Compile Include="Utils\DbNameAttribute.cs" />
-    <Compile Include="Entities\EntityExtension.cs" />
+    <Compile Include="Utils\EntityExtension.cs" />
     <Compile Include="Entities\IEntity.cs" />
     <Compile Include="Repositories\IRepository.cs" />
-    <Compile Include="Entities\Product.cs" />
-    <Compile Include="Entities\PurchageStatus.cs" />
-    <Compile Include="Entities\Purchase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sql\EntityMapBase.cs" />
     <Compile Include="Sql\ISqlRequestBuilder.cs" />
-    <Compile Include="Sql\Repository.cs" />
+    <Compile Include="Repositories\Repository.cs" />
     <Compile Include="Sql\SqlRequestBuilder.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Components\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>

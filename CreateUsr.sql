@@ -1,0 +1,7 @@
+﻿CREATE LOGIN katausr WITH PASSWORD=N'katapwd', 
+                 DEFAULT_DATABASE=katadb,
+				 CHECK_EXPIRATION=OFF,
+				 CHECK_POLICY=OFF
+GO
+CREATE USER katausr FOR LOGIN katausr WITH DEFAULT_SCHEMA=[dbo]
+GO

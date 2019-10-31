@@ -1,13 +1,12 @@
 ﻿using DbKata.Utils;
-using System;
-using System.Data;
 
 namespace DbKata.Entities
 {
     [DbName("TCUSTOMER")]
-    public class Customer : IEntity<string>
+    public class Customer : IEntity<int>
     {
-        public string Id { get; set; }
+        [DbName("CId")]
+        public int Id { get; set; }
 
         [DbName("FNAME")]
         public string Firstname { get; set; }

@@ -1,13 +1,12 @@
 ﻿using Dapper.FluentMap.Mapping;
-using DbKata.Entities;
 using DbKata.Utils;
 using System.Reflection;
 
 namespace DbKata.Sql
 {
-    public abstract class EntityMapBase<T> : EntityMap<T> where T : class
+    public class EntityMapper<T> : EntityMap<T> where T : class
     {
-        public EntityMapBase()
+        public EntityMapper()
         {
             foreach (var propertyInfo in typeof(T).GetProperties())
             {
